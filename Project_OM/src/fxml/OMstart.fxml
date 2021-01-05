@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OMstartController">
+   <center>
+      <AnchorPane prefHeight="720.0" prefWidth="1103.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imgs/title.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="quitButton" layoutX="1249.0" layoutY="-2.0" mnemonicParsing="false" onAction="#quitButtonOnAction" prefHeight="30.0" prefWidth="30.0" text="X" textAlignment="CENTER">
+               <font>
+                  <Font name="KoPubDotum Medium" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="831.0" layoutY="122.0" text="Project OM" textFill="WHITE">
+               <font>
+                  <Font name="KoPubDotum Light" size="64.0" />
+               </font>
+            </Label>
+            <Button fx:id="startButton" layoutX="860.0" layoutY="334.0" mnemonicParsing="false" onAction="#startButtonOnAction" prefHeight="50.0" prefWidth="300.0" text="새 게임" textAlignment="CENTER" textFill="#060606">
+               <font>
+                  <Font name="KoPubDotum Light" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="860.0" layoutY="414.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="불러오기" textAlignment="CENTER" textFill="#060606">
+               <font>
+                  <Font name="KoPubDotum Light" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="860.0" layoutY="492.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="앨범" textAlignment="CENTER" textFill="#060606">
+               <font>
+                  <Font name="KoPubDotum Light" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="860.0" layoutY="568.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="설정" textAlignment="CENTER" textFill="#060606">
+               <font>
+                  <Font name="KoPubDotum Light" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
