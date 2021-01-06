@@ -1,4 +1,4 @@
-package sample.package1;
+package main.info;
 
 public class ISS {
 

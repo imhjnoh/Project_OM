@@ -1,4 +1,4 @@
-package sample.package1;
+package main.info;
 
 import java.util.ArrayList;
 

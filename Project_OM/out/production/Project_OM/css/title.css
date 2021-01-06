@@ -1,0 +1,13 @@
+.btn-title{
+  -fx-font-family: "Saira Stencil One", cursive;
+  -fx-font-size: 40px;
+}
+#title-exit:hover{
+  -fx-text-fill: #78ff57;
+}
+#title-settings:hover{
+  -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0 , 2 , 2 );
+}
+#title-newgame:hover{
+  -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0 , 2 , 2 );
+}
