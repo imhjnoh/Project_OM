@@ -16,6 +16,7 @@ import main.info.Player;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class OMstartController implements Initializable {
@@ -75,12 +76,23 @@ public class OMstartController implements Initializable {
 
     public void newGameOnAction(MouseEvent e) throws IOException {
 //        Player player = new Player("Administrator", new int[]{5, 5, 5, 5, 5}, new int[]{0, 0, 0, 0, 0});
+        Player player = new Player(100,50,100,100,100,1,
+                new ArrayList());
+
         Parent root;
         Stage stage = (Stage) title_newgame.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("../../fxml/scene_01.fxml"));
+//        root = FXMLLoader.load(getClass().getResource("../../fxml/scene_01.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/scene_01.fxml"));
+        // pass player parameter to controller
+        root = loader.load();
+
+        OMstoryController controller = loader.<OMstoryController>getController();
+        controller.initPlayer(player);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
 
     }
 

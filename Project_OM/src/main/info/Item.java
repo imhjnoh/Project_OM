@@ -10,6 +10,18 @@ public class Item {
         this.name = name;
         this.hungerPlus = hungerPlus;
         this.healthPlus = healthPlus;
+
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getHungerPlus() {
+        return hungerPlus;
+    }
+
+    public int getHealthPlus() {
+        return healthPlus;
+    }
 }

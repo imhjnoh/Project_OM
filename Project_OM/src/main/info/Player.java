@@ -14,7 +14,7 @@ public class Player {
 
     public Player() {
         sleep = 100;
-        hungry = 100;
+        hungry = 50;
         health = 100;
         temperature = 50;
         injury = 0;
@@ -83,5 +83,13 @@ public class Player {
 
     public void setSceneNum(int sceneNum) {
         this.sceneNum = sceneNum;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
     }
 }
