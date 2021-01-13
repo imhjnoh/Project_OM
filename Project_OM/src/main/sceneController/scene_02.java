@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class OMstoryController {
+public class scene_02 {
     @FXML
     private Label btn_exit, item_slot_1, item_slot_2, item_slot_3, item_slot_4, item_slot_5, item_01, item_02, event_01, lbl_script;
     private Label[] item_slot;
@@ -35,7 +36,10 @@ public class OMstoryController {
     @FXML
     private ProgressBar bar_hungry, bar_health, bar_temperature, bar_injury;
     @FXML
-    private AnchorPane intro;
+    private ImageView mapIcon;
+    @FXML
+    private ImageView ISSMAP;
+
     private ArrayList<Item> curr_items = new ArrayList<Item>();
     public Queue script = new LinkedList();
     private static MediaPlayer mediaPlayer;
@@ -57,36 +61,7 @@ public class OMstoryController {
         item_slot[4] = item_slot_5;
 
     }
-    void initPlayer(Player player_param){
-        // OMstartController에서 받아온 player를 할당.
-        player = player_param;
-        // player의 상태 param으로 초기화.
-        bar_sleep.setProgress(player.getSleep() * 0.01);
-        bar_hungry.setProgress(player.getHungry() * 0.01);
-        bar_health.setProgress(player.getHealth() * 0.01);
-        bar_temperature.setProgress(player.getTemperature() * 0.01);
-        bar_injury.setProgress(player.getInjury() * 0.01);
 
-//        curr_items = player_param.getInventory();
-
-        int itr = 0;
-        try{
-            curr_items.addAll(player_param.getInventory());
-            if(!curr_items.isEmpty()){
-                for(Item i: curr_items){
-                    BackgroundImage backgroundImage = new BackgroundImage( new Image(i.getName()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-                    Background background = new Background(backgroundImage);
-                    item_slot[itr].setBackground(background);
-                    itr++;
-                }
-            }else{
-                curr_items = new ArrayList<Item>();
-            }
-        }catch (Exception e){
-
-        }
-
-    }
     void changeInvent(){
         int itr = 0;
         try{
@@ -114,22 +89,22 @@ public class OMstoryController {
 
 
 
-    public OMstoryController() {
+    public scene_02() {
 
         String path = OMstoryController.class.getResource("").getPath();
 
         String musicFile = "src/etc/bensound-ofeliasdream.mp3";     // For example
 
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+//        Media sound = new Media(new File(musicFile).toURI().toString());
+//        mediaPlayer = new MediaPlayer(sound);
+//        mediaPlayer.play();
 
         /*
 
-        */
+         */
         BufferedReader reader;
         try{
-            reader = new BufferedReader(new FileReader("src/etc/scene_01.txt"));
+            reader = new BufferedReader(new FileReader("src/etc/scene_02.txt"));
             String line = reader.readLine();
             while (line != null) {
                 System.out.println(line);
@@ -140,17 +115,6 @@ public class OMstoryController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-//
-//        player.setSleep(100);
-//        player.setHungry(50);
-//        player.setHealth(100);
-//        player.setTemperature(100);
-//        player.setInjury(100);
-
-
-
     }
 
     // 졸려서 아주 약식으로 박아버림.. 아이템은 버튼리스트로 만들어서 셋온액션을 아이템온액션으로 하면 될 것 같다
@@ -161,28 +125,28 @@ public class OMstoryController {
 //        System.out.println(e.getPickResult().getIntersectedNode().getId());
         Label temlabel = (Label) e.getSource();
         String id = temlabel.getId();
-            if(id.equals("item_01") ){
+        if(id.equals("item_01") ){
 
-                temlabel.setOpacity(0.0);
-                temlabel.setDisable(true);
-                curr_items.add(new Item("./imgs/item_coin.png",0,0));
-                System.out.println("01");
+            temlabel.setOpacity(0.0);
+            temlabel.setDisable(true);
+            curr_items.add(new Item("./imgs/item_coin.png",0,0));
+            System.out.println("01");
 
-            }else if(id.equals("item_02")){
-
-
-                temlabel.setOpacity(0.0);
-                temlabel.setDisable(true);
-                curr_items.add(new Item("./imgs/item_chip.png",0,0));
-
-            }
-
-            Media sfx = new Media(new File("src/etc/Glitch-button-short-sound-effect.mp3").toURI().toString());
-            mp_sfx = new MediaPlayer(sfx);
-            mp_sfx.play();
+        }else if(id.equals("item_02")){
 
 
-            changeInvent();
+            temlabel.setOpacity(0.0);
+            temlabel.setDisable(true);
+            curr_items.add(new Item("./imgs/item_chip.png",0,0));
+
+        }
+
+        Media sfx = new Media(new File("src/etc/Glitch-button-short-sound-effect.mp3").toURI().toString());
+        mp_sfx = new MediaPlayer(sfx);
+        mp_sfx.play();
+
+
+        changeInvent();
 
 
 
@@ -239,18 +203,12 @@ public class OMstoryController {
 
     }
 
-    public void introPressed(MouseEvent e){
-        FadeTransition ft = new FadeTransition(Duration.millis(2000),intro);
-        ft.setFromValue(1.0);
-        ft.setToValue(0.0);
-        ft.play();
-//        new Timeline(new KeyFrame(Duration.millis(0),
-//                new KeyValue(intro.opacityProperty(),1)),
-//                new KeyFrame(Duration.millis(2000),
-//                        new KeyValue(intro.opacityProperty(),0)));
-//
-        intro.setDisable(true);
-
+    public void mapIconClicked(MouseEvent e) {
+        if (ISSMAP.isVisible()) {
+            ISSMAP.setVisible(false);
+        } else {
+            ISSMAP.setVisible(true);
+        }
     }
 
     //아...............게임엔개발팀의애정혹은돈에의한뭐시기가담긴거구나....

@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="main.sceneController.OMstoryController"
-            prefHeight="720" prefWidth="1280">
-
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/scene.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sceneController.scene_02">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs/map2.jpg" />
+         </image>
+      </ImageView>
+      <Label id="btn_exit" fx:id="btn_exit" layoutX="11.0" layoutY="6.0" onMouseClicked="#exitOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/scene.css">
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label fx:id="item_slot_1" disable="true" layoutX="7.0" layoutY="118.0" prefHeight="100.0" prefWidth="100.0" styleClass="item_slot" stylesheets="@../css/scene.css">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="item_slot_2" disable="true" layoutX="7.0" layoutY="222.0" prefHeight="100.0" prefWidth="100.0" styleClass="item_slot" stylesheets="@../css/scene.css">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="item_slot_3" disable="true" layoutX="7.0" layoutY="326.0" prefHeight="100.0" prefWidth="100.0" styleClass="item_slot" stylesheets="@../css/scene.css">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="item_slot_4" disable="true" layoutX="7.0" layoutY="430.0" prefHeight="100.0" prefWidth="100.0" styleClass="item_slot" stylesheets="@../css/scene.css">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="item_slot_5" disable="true" layoutX="7.0" layoutY="534.0" prefHeight="100.0" prefWidth="100.0" styleClass="item_slot" stylesheets="@../css/scene.css">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Label fx:id="lbl_script" alignment="CENTER" layoutY="555.0" onMouseClicked="#scriptLabelOnClick" prefHeight="130.0" prefWidth="1280.0" style="-fx-background-color: rgba(0,0,0,0.5); -fx-padding: 30px;" text="Administrator, 예상되는 이동 경로와 현재 위치를 확인하실 수 있습니다." textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="590.0" layoutY="496.0" style="-fx-background-color: rgba(0,0,0,0.5);" text="어떻게 할 수 있지?" textFill="WHITE" visible="false">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="bar_sleep" layoutX="1127.0" layoutY="15.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="132.0" progress="0.5" />
+      <ProgressBar fx:id="bar_hungry" layoutX="1127.0" layoutY="36.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="132.0" progress="0.5" />
+      <ProgressBar fx:id="bar_health" layoutX="1127.0" layoutY="57.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="132.0" progress="0.5" />
+      <ProgressBar fx:id="bar_temperature" layoutX="1127.0" layoutY="78.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="132.0" progress="0.5" />
+      <ProgressBar fx:id="bar_injury" layoutX="1127.0" layoutY="99.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#mapIconClicked" prefHeight="20.0" prefWidth="132.0" progress="0.5" />
+      <ImageView fx:id="ISSMAP" fitHeight="400.0" fitWidth="700.0" layoutX="323.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../imgs/ISSMAP_0.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mapIcon" fitHeight="30.0" fitWidth="50.0" layoutX="1059.0" layoutY="20.0" onMouseClicked="#mapIconClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs/mapIcon.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>
