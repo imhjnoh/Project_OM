@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class OMstartController implements Initializable {
+public class scene_00 implements Initializable {
 
     @FXML
     private Button quitButton;
@@ -86,7 +86,7 @@ public class OMstartController implements Initializable {
         // pass player parameter to controller
         root = loader.load();
 
-        OMstoryController controller = loader.<OMstoryController>getController();
+        scene_01 controller = loader.<scene_01>getController();
         controller.initPlayer(player);
 
         Scene scene = new Scene(root);

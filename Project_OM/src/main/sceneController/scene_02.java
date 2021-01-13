@@ -1,6 +1,5 @@
 package main.sceneController;
 
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +14,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import main.info.Item;
 import main.info.Player;
 
@@ -134,7 +132,7 @@ public class scene_02 {
 
     public scene_02() {
 
-        String path = OMstoryController.class.getResource("").getPath();
+        String path = scene_01.class.getResource("").getPath();
 
         String musicFile = "src/etc/bensound-ofeliasdream.mp3";     // For example
 
@@ -147,7 +145,7 @@ public class scene_02 {
          */
         BufferedReader reader;
         try{
-            reader = new BufferedReader(new FileReader("src/etc/scene_02.txt"));
+            reader = new BufferedReader(new FileReader("src/script/scene_02.txt"));
             String line = reader.readLine();
             while (line != null) {
                 System.out.println(line);
