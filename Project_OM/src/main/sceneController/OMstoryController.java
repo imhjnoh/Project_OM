@@ -216,11 +216,17 @@ public class OMstoryController {
         root = loader.load();
 
         scene_02 controller = loader.<scene_02>getController();
-        controller.initPlayer(player);
+
+
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
+
+        //controller.changeInvent();
+        controller.initPlayer(player);
+
         stage.show();
+
 
     }
 

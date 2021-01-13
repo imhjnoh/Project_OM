@@ -88,6 +88,7 @@ public class scene_02 {
 
             if(!curr_items.isEmpty()){
                 for(Item i: curr_items){
+                    item_slot[itr].setOpacity(1.0);
                     BackgroundImage backgroundImage = new BackgroundImage( new Image(i.getName()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
                     Background background = new Background(backgroundImage);
                     item_slot[itr].setBackground(background);
@@ -106,6 +107,7 @@ public class scene_02 {
     void changeInvent(){
         int itr = 0;
         try{
+            System.out.println(curr_items.isEmpty());
             if(!curr_items.isEmpty()){
                 for(Item i: curr_items){
 
@@ -156,6 +158,8 @@ public class scene_02 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
     // 졸려서 아주 약식으로 박아버림.. 아이템은 버튼리스트로 만들어서 셋온액션을 아이템온액션으로 하면 될 것 같다
@@ -216,6 +220,8 @@ public class scene_02 {
     public void scriptLabelOnClick(MouseEvent e){
         String curr_script = (String) script.poll();
         String sfx_file = new String();
+
+
 
         if(curr_script == null || curr_script.isEmpty() || curr_script == "\n"){
             lbl_script.setOpacity(0.0);
