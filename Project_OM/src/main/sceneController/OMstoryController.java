@@ -199,9 +199,25 @@ public class OMstoryController {
     }
 
     public void eventLabelOnClick(MouseEvent e) throws IOException {
+//        Parent root;
+//        Stage stage = (Stage) event_01.getScene().getWindow();
+//        root = FXMLLoader.load(getClass().getResource("../../fxml/scene_02.fxml"));
+//        Scene scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+
+        player.setInventory(curr_items);
+
         Parent root;
         Stage stage = (Stage) event_01.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("../../fxml/scene_02.fxml"));
+//        root = FXMLLoader.load(getClass().getResource("../../fxml/scene_01.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/scene_02.fxml"));
+        // pass player parameter to controller
+        root = loader.load();
+
+        scene_02 controller = loader.<scene_02>getController();
+        controller.initPlayer(player);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

@@ -61,6 +61,47 @@ public class scene_02 {
         item_slot[4] = item_slot_5;
 
     }
+    void initPlayer(Player player_param){
+        // OMstoryController에서 받아온 player를 할당.
+        player = player_param;
+        // player의 상태 param으로 초기화.
+        bar_sleep.setProgress(player.getSleep() * 0.01);
+        bar_hungry.setProgress(player.getHungry() * 0.01);
+        bar_health.setProgress(player.getHealth() * 0.01);
+        bar_temperature.setProgress(player.getTemperature() * 0.01);
+        bar_injury.setProgress(player.getInjury() * 0.01);
+
+//        curr_items = player_param.getInventory();
+
+        int itr = 0;
+        try{
+            curr_items.addAll(player_param.getInventory());
+
+//            System.out.println("player_param.getInventory()");
+//            for (int i = 0; i < player_param.getInventory().size(); i++) {
+//                System.out.print(player_param.getInventory().get(i).getName() + " ");
+//            }
+//            System.out.println("curr_items");
+//            for (int i = 0; i < curr_items.size(); i++) {
+//                System.out.print(player_param.getInventory().get(i).getName() + " ");
+//            }
+
+            if(!curr_items.isEmpty()){
+                for(Item i: curr_items){
+                    BackgroundImage backgroundImage = new BackgroundImage( new Image(i.getName()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+                    Background background = new Background(backgroundImage);
+                    item_slot[itr].setBackground(background);
+                    itr++;
+//                    System.out.println("entered" + itr);
+                }
+            }else{
+                curr_items = new ArrayList<Item>();
+            }
+        }catch (Exception e){
+
+        }
+
+    }
 
     void changeInvent(){
         int itr = 0;
