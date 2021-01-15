@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import main.Managers.LoadScene;
 import main.info.ISS;
 import main.info.Items;
 import main.info.Player;
@@ -75,23 +76,11 @@ public class scene_00 implements Initializable {
     }
 
     public void newGameOnAction(MouseEvent e) throws IOException {
-//        Player player = new Player("Administrator", new int[]{5, 5, 5, 5, 5}, new int[]{0, 0, 0, 0, 0});
-        Player player = new Player(100,50,100,100,100,1,
-                new ArrayList());
 
-        Parent root;
-        Stage stage = (Stage) title_newgame.getScene().getWindow();
-//        root = FXMLLoader.load(getClass().getResource("../../fxml/scene_01.fxml"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/scene_01.fxml"));
-        // pass player parameter to controller
-        root = loader.load();
+        Player player = new Player(100,50,100,100,100,1, new ArrayList());
+        ISS iss = new ISS(100, 100, 100);
 
-        scene_01 controller = loader.<scene_01>getController();
-        controller.initPlayer(player);
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        new LoadScene(iss, player, player.getInventory(), title_newgame, "../../fxml/scene_01.fxml",1);
 
 
     }

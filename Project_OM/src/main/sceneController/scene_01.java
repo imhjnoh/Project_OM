@@ -15,6 +15,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import main.Managers.LoadScene;
+import main.info.ISS;
 import main.info.Item;
 import main.info.Player;
 
@@ -43,6 +45,7 @@ public class scene_01 {
 
 
     public Player player;
+    public ISS iss;
 
     @FXML
     void initialize(){
@@ -57,7 +60,10 @@ public class scene_01 {
         item_slot[4] = item_slot_5;
 
     }
-    void initPlayer(Player player_param){
+    public void initISS(ISS iss_param){
+        iss = iss_param;
+    }
+    public void initPlayer(Player player_param){
         // OMstartController에서 받아온 player를 할당.
         player = player_param;
         // player의 상태 param으로 초기화.
@@ -199,33 +205,8 @@ public class scene_01 {
     }
 
     public void eventLabelOnClick(MouseEvent e) throws IOException {
-//        Parent root;
-//        Stage stage = (Stage) event_01.getScene().getWindow();
-//        root = FXMLLoader.load(getClass().getResource("../../fxml/scene_02.fxml"));
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
 
-        player.setInventory(curr_items);
-
-        Parent root;
-        Stage stage = (Stage) event_01.getScene().getWindow();
-//        root = FXMLLoader.load(getClass().getResource("../../fxml/scene_01.fxml"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/scene_02.fxml"));
-        // pass player parameter to controller
-        root = loader.load();
-
-        scene_02 controller = loader.<scene_02>getController();
-
-
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-
-        //controller.changeInvent();
-        controller.initPlayer(player);
-
-        stage.show();
+        new LoadScene(iss, player, curr_items, event_01, "../../fxml/scene_02.fxml", 2);
 
 
     }

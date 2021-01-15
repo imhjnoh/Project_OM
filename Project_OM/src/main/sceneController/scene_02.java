@@ -59,7 +59,7 @@ public class scene_02 {
         item_slot[4] = item_slot_5;
 
     }
-    void initPlayer(Player player_param){
+    public void initPlayer(Player player_param){
         // OMstoryController에서 받아온 player를 할당.
         player = player_param;
         // player의 상태 param으로 초기화.
