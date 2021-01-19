@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "itemNo": 0,
+            "itemCode": "_Coin",
+            "itemScript": "동전이다. 이런 상황에서 사용할 수 있는 곳이 있을까?"
+        },
+        {
+            "itemNo": 1,
+            "itemCode": "_Chip",
+            "itemScript": "어딘가 사용할 법한 칩이다. 잘 챙겨두자."
+        },
+        {
+            "itemNo": 2,
+            "itemCode": "_Apple",
+            "itemScript": "사과다. 아직 신선해 보인다. 지금 먹어야겠다."
+        }
+    ]
+}
