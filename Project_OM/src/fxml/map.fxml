@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sceneController.map">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs/ISSMAP_0.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="btn_exit" onMouseClicked="#exitButtonOnAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/scene.css" />
+      <Label fx:id="player_token" layoutX="-37.0" text="Administrator" />
+   </children>
+</AnchorPane>

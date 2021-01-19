@@ -61,7 +61,7 @@
       <ProgressBar fx:id="bar_health" layoutX="1127.0" layoutY="57.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="132.0" progress="0.5" />
       <ProgressBar fx:id="bar_temperature" layoutX="1127.0" layoutY="78.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="132.0" progress="0.5" />
       <ProgressBar fx:id="bar_injury" layoutX="1127.0" layoutY="99.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#mapIconClicked" prefHeight="20.0" prefWidth="132.0" progress="0.5" />
-      <ImageView fx:id="ISSMAP" fitHeight="400.0" fitWidth="700.0" layoutX="323.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="ISSMAP" fitHeight="600.0" fitWidth="800.0" layoutX="323.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../imgs/ISSMAP_0.png" />
          </image>
