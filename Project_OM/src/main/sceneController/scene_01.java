@@ -13,9 +13,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.Managers.LoadScene;
+import main.Managers.SoundManager;
 import main.info.ISS;
 import main.info.Item;
 import main.info.Player;
+import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,13 +42,17 @@ public class scene_01 {
     private static MediaPlayer mediaPlayer;
     private static MediaPlayer mp_sfx;
 
+    private SoundManager BGM;
+
 
     public Player player;
     public ISS iss;
 
     @FXML
     void initialize(){
+
         initItemArray();
+
     }
     void initItemArray(){
         item_slot = new Label[5];
@@ -117,15 +123,18 @@ public class scene_01 {
 
 
 
-    public scene_01() {
+    public scene_01() throws IOException, ParseException {
 
-        String path = scene_01.class.getResource("").getPath();
+        BGM = new SoundManager("main_bgm");
+        BGM.PlaySound();
 
-        String musicFile = "src/etc/bensound-ofeliasdream.mp3";     // For example
-
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+//        String path = scene_01.class.getResource("").getPath();
+//
+//        String musicFile = "src/etc/bensound-ofeliasdream.mp3";     // For example
+//
+//        Media sound = new Media(new File(musicFile).toURI().toString());
+//        mediaPlayer = new MediaPlayer(sound);
+//        mediaPlayer.play();
 
         /*
 
@@ -208,7 +217,7 @@ public class scene_01 {
 
     }
 
-    public void scriptLabelOnClick(MouseEvent e){
+    public void scriptLabelOnClick(MouseEvent e) throws IOException, ParseException {
         String curr_script = (String) script.poll();
         String sfx_file = new String();
 
@@ -216,23 +225,25 @@ public class scene_01 {
             lbl_script.setOpacity(0.0);
             lbl_script.setDisable(true);
             return;
-        }
-        else if(curr_script.startsWith("[a]")){
-            sfx_file = "src/etc/Glitch-button-short-sound-effect.mp3";
+        }else if(curr_script.startsWith("[a]")){
+//            sfx_file = "src/etc/Glitch-button-short-sound-effect.mp3";
             lbl_script.setTextFill(Color.SKYBLUE);
             curr_script = curr_script.substring(3);
+            new SoundManager("sfx_glitch_button").PlaySound();
+
         }else if(curr_script.startsWith("[om]")){
-            sfx_file = "src/etc/Error-sound-effect.mp3";
+//            sfx_file = "src/etc/Error-sound-effect.mp3";
             lbl_script.setTextFill(Color.WHITE);
             curr_script = curr_script.substring(4);
+            new SoundManager("sfx_system_sound").PlaySound();
         }
 
         // 사운드 효과 실행
-        if(sfx_file.isEmpty()!=true){
-            Media sfx = new Media(new File(sfx_file).toURI().toString());
-            mp_sfx = new MediaPlayer(sfx);
-            mp_sfx.play();
-        }
+//        if(sfx_file.isEmpty()!=true){
+//            Media sfx = new Media(new File(sfx_file).toURI().toString());
+//            mp_sfx = new MediaPlayer(sfx);
+//            mp_sfx.play();
+//        }
 
         lbl_script.setText(curr_script);
 

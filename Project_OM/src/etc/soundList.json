@@ -1,0 +1,11 @@
+{
+    "main_bgm":{
+        "source":"./src/etc/bensound-ofeliasdream.mp3"
+    },
+    "sfx_glitch_button":{
+        "source":"./src/etc/Glitch-button-short-sound-effect.mp3"
+    },
+    "sfx_system_sound":{
+        "source":"./src/etc/Error-sound-effect.mp3"
+    }
+}

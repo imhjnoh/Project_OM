@@ -28,7 +28,7 @@ import java.util.ArrayList;
     - int sceneNo                   : 다음 씬의 숫자
 
     < 호출 예시 > - scene_01.java
-    new LoadScene(player, curr_items, event_01, "../../fxml/scene_02.fxml", 2);
+    new LoadScene(iss, player, curr_items, event_01, "../../fxml/scene_02.fxml", 2);
 
     < 유지 관리 >
     아래와 같이 N번째 씬이 추가될 때마다 else if 블록의 추가가 필요함.
