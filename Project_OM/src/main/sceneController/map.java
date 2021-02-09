@@ -28,7 +28,7 @@ public class map {
     public void exitButtonOnAction(MouseEvent event){
 //        Stream<Window> open = Stage.getWindows().stream().filter(Window::isShowing);
 //        System.out.println(Arrays.toString(open.toArray()));
-
+        scene_02.setIsMapShowingFALSE();
         Stage stage = (Stage) btn_exit.getScene().getWindow();
         stage.close();
     }

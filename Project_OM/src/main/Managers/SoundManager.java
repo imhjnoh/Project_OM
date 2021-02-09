@@ -36,23 +36,14 @@ public class SoundManager {
 
 
     public String JSONLoader(String sound_code) throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
 
+        JSONParser parser = new JSONParser();
         Object object = parser.parse(new FileReader("./src/etc/soundList.json"));
         JSONObject soundList = (JSONObject)object;
         JSONObject soundObject = (JSONObject) soundList.get(sound_code);
         String source = (String) soundObject.get("source");
 
         return source;
-
-
-
-//        JSONArray sound = (JSONArray)soundList.json.get("items");
-//
-//        Iterator<JSONObject> iterator = post.iterator();
-//        while(iterator.hasNext()){
-//            System.out.println(iterator.next().get("itemNo"));
-//        }
 
     }
 }

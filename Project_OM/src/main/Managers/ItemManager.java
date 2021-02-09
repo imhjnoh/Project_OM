@@ -1,30 +1,36 @@
 package main.Managers;
 
-import org.json.simple.JSONArray;
+import main.info.Item;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
-import java.util.Iterator;
+import java.io.IOException;
 
 public class ItemManager {
 
-    public ItemManager() throws Exception{
-//        parseJson();
-        System.out.println("ItemManager made");
+    private Item item;
+    private String source;
+
+    public ItemManager(String item_code) throws Exception {
+        source = getItemSource(item_code);
+        item = new Item(source);
     }
 
-    public void parseJson() throws Exception {
+    public String getSource() { return source; }
+
+    public String getItemSource(String item_code) throws IOException, ParseException {
 
         JSONParser parser = new JSONParser();
+        Object object = parser.parse(new FileReader("./src/etc/itemList.json"));
+        JSONObject itemList = (JSONObject) object;
+        JSONObject itemObject = (JSONObject) itemList.get(item_code);
+        source = (String) itemObject.get("itemRoute");
 
-        Object obj = parser.parse(new FileReader("./src/etc/itemList.json"));
-        JSONObject jsonObject = (JSONObject)obj;
-        JSONArray post = (JSONArray)jsonObject.get("items");
-        Iterator<JSONObject> iterator = post.iterator();
-        while(iterator.hasNext()){
-            System.out.println(iterator.next().get("itemNo"));
-        }
+        System.out.println(source);
+
+        return source;
 
     }
 }

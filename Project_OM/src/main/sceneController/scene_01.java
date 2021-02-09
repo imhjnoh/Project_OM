@@ -12,6 +12,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import main.Managers.ItemManager;
 import main.Managers.LoadScene;
 import main.Managers.SoundManager;
 import main.info.ISS;
@@ -43,18 +44,20 @@ public class scene_01 {
     private static MediaPlayer mp_sfx;
 
     private SoundManager BGM;
+    private ItemManager itemManager;
 
 
     public Player player;
     public ISS iss;
 
     @FXML
-    void initialize(){
+    void initialize() {
 
         initItemArray();
 
     }
-    void initItemArray(){
+
+    void initItemArray() {
         item_slot = new Label[5];
         item_slot[0] = item_slot_1;
         item_slot[1] = item_slot_2;
@@ -63,10 +66,12 @@ public class scene_01 {
         item_slot[4] = item_slot_5;
 
     }
-    public void initISS(ISS iss_param){
+
+    public void initISS(ISS iss_param) {
         iss = iss_param;
     }
-    public void initPlayer(Player player_param){
+
+    public void initPlayer(Player player_param) {
         // OMstartController에서 받아온 player를 할당.
         player = player_param;
         // player의 상태 param으로 초기화.
@@ -79,32 +84,33 @@ public class scene_01 {
 //        curr_items = player_param.getInventory();
 
         int itr = 0;
-        try{
+        try {
             curr_items.addAll(player_param.getInventory());
-            if(!curr_items.isEmpty()){
-                for(Item i: curr_items){
-                    BackgroundImage backgroundImage = new BackgroundImage( new Image(i.getName()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+            if (!curr_items.isEmpty()) {
+                for (Item i : curr_items) {
+                    BackgroundImage backgroundImage = new BackgroundImage(new Image(i.getName()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
                     Background background = new Background(backgroundImage);
                     item_slot[itr].setBackground(background);
                     itr++;
                 }
-            }else{
+            } else {
                 curr_items = new ArrayList<Item>();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
     }
-    void changeInvent(){
+
+    void changeInvent() {
         int itr = 0;
-        try{
-            if(!curr_items.isEmpty()){
-                for(Item i: curr_items){
+        try {
+            if (!curr_items.isEmpty()) {
+                for (Item i : curr_items) {
 
                     item_slot[itr].setOpacity(1.0);
 //                    item_slot[itr].setDisable(false);
-                    BackgroundImage backgroundImage = new BackgroundImage( new Image(i.getName()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+                    BackgroundImage backgroundImage = new BackgroundImage(new Image(i.getName()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
                     Background background = new Background(backgroundImage);
                     item_slot[itr].setBackground(background);
 
@@ -114,7 +120,7 @@ public class scene_01 {
                 }
             }
             System.out.println("-");
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         return;
@@ -122,25 +128,13 @@ public class scene_01 {
     }
 
 
-
     public scene_01() throws IOException, ParseException {
 
         BGM = new SoundManager("main_bgm");
         BGM.PlaySound();
 
-//        String path = scene_01.class.getResource("").getPath();
-//
-//        String musicFile = "src/etc/bensound-ofeliasdream.mp3";     // For example
-//
-//        Media sound = new Media(new File(musicFile).toURI().toString());
-//        mediaPlayer = new MediaPlayer(sound);
-//        mediaPlayer.play();
-
-        /*
-
-        */
         BufferedReader reader;
-        try{
+        try {
             reader = new BufferedReader(new FileReader("src/script/scene_01.txt"));
             String line = reader.readLine();
             while (line != null) {
@@ -162,50 +156,44 @@ public class scene_01 {
 //        player.setInjury(100);
 
 
-
     }
 
     // 졸려서 아주 약식으로 박아버림.. 아이템은 버튼리스트로 만들어서 셋온액션을 아이템온액션으로 하면 될 것 같다
     // buttonList[i].setOnAction(event -> checkId((Button) event.getSource()));
-    public void itemLabelOnClick(MouseEvent e){
-//        BackgroundImage item1_image = new BackgroundImage(new Image("./images/item_chip.png",32,32,false,true), BackgroundRepeat.NO_REPEAT, BackgroundSize.AUTO);
+    public void itemLabelOnClick(MouseEvent e) throws Exception {
 
-//        System.out.println(e.getPickResult().getIntersectedNode().getId());
         Label temlabel = (Label) e.getSource();
+        double opacity = 1.0;
+        boolean disable = false;
         String id = temlabel.getId();
-            if(id.equals("item_01") ){
+        String source = "Error: source not set";
 
-                temlabel.setOpacity(0.0);
-                temlabel.setDisable(true);
-                curr_items.add(new Item("./imgs/item_coin.png",0,0));
-                System.out.println("01");
+        if (id.equals("item_01")) {
+            opacity = 0.0;
+            disable = true;
+            source = new ItemManager("000_Coin").getSource();
+        } else if (id.equals("item_02")) {
+            opacity = 0.0;
+            disable = true;
+            source = new ItemManager("001_Chip").getSource();
+        }
 
-            }else if(id.equals("item_02")){
+        curr_items.add(new Item(source));
+        temlabel.setOpacity(opacity);
+        temlabel.setDisable(disable);
+        clickSound();
+        changeInvent();
 
-
-                temlabel.setOpacity(0.0);
-                temlabel.setDisable(true);
-                curr_items.add(new Item("./imgs/item_chip.png",0,0));
-
-            }
-
-            Media sfx = new Media(new File("src/etc/Glitch-button-short-sound-effect.mp3").toURI().toString());
-            mp_sfx = new MediaPlayer(sfx);
-            mp_sfx.play();
-
-
-            changeInvent();
-
-
-
-
-//        BackgroundImage backgroundImage = new BackgroundImage( new Image("./imgs/item_chip.png"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-//        Background background = new Background(backgroundImage);
-//
-//        itmlabel.setBackground(background);
     }
 
-    public void exitOnAction(MouseEvent e){
+    public void clickSound() throws IOException, ParseException {
+//        Media sfx = new Media(new File("src/etc/Glitch-button-short-sound-effect.mp3").toURI().toString());
+//        mp_sfx = new MediaPlayer(sfx);
+//        mp_sfx.play();
+        new SoundManager("sfx_glitch_button").PlaySound();
+    }
+
+    public void exitOnAction(MouseEvent e) {
         Stage stage = (Stage) btn_exit.getScene().getWindow();
         stage.close();
     }
@@ -214,44 +202,36 @@ public class scene_01 {
 
         new LoadScene(iss, player, curr_items, event_01, "../../fxml/scene_02.fxml", 2);
 
-
     }
 
     public void scriptLabelOnClick(MouseEvent e) throws IOException, ParseException {
         String curr_script = (String) script.poll();
         String sfx_file = new String();
 
-        if(curr_script == null || curr_script.isEmpty() || curr_script == "\n"){
+        if (curr_script == null || curr_script.isEmpty() || curr_script == "\n") {
             lbl_script.setOpacity(0.0);
             lbl_script.setDisable(true);
             return;
-        }else if(curr_script.startsWith("[a]")){
+        } else if (curr_script.startsWith("[a]")) {
 //            sfx_file = "src/etc/Glitch-button-short-sound-effect.mp3";
             lbl_script.setTextFill(Color.SKYBLUE);
             curr_script = curr_script.substring(3);
             new SoundManager("sfx_glitch_button").PlaySound();
 
-        }else if(curr_script.startsWith("[om]")){
+        } else if (curr_script.startsWith("[om]")) {
 //            sfx_file = "src/etc/Error-sound-effect.mp3";
             lbl_script.setTextFill(Color.WHITE);
             curr_script = curr_script.substring(4);
             new SoundManager("sfx_system_sound").PlaySound();
         }
 
-        // 사운드 효과 실행
-//        if(sfx_file.isEmpty()!=true){
-//            Media sfx = new Media(new File(sfx_file).toURI().toString());
-//            mp_sfx = new MediaPlayer(sfx);
-//            mp_sfx.play();
-//        }
 
         lbl_script.setText(curr_script);
 
-
     }
 
-    public void introPressed(MouseEvent e){
-        FadeTransition ft = new FadeTransition(Duration.millis(2000),intro);
+    public void introPressed(MouseEvent e) {
+        FadeTransition ft = new FadeTransition(Duration.millis(2000), intro);
         ft.setFromValue(1.0);
         ft.setToValue(0.0);
         ft.play();

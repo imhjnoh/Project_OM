@@ -44,8 +44,9 @@ public class scene_02 {
     public Queue script = new LinkedList();
     private static MediaPlayer mediaPlayer;
     private static MediaPlayer mp_sfx;
-    private boolean isMapShowing;
-
+    private static boolean isMapShowing;
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     public Player player;
 
@@ -240,10 +241,30 @@ public class scene_02 {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("../../fxml/map.fxml"));
+
                 Stage stage = new Stage();
                 stage.initStyle(StageStyle.UNDECORATED);
-                stage.setResizable(false);
-                stage.setScene(new Scene(fxmlLoader.load(), 800, 600));
+                stage.setResizable(true);
+
+                AnchorPane ap = fxmlLoader.load();
+                ap.setOnMousePressed(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        xOffset = event.getSceneX();
+                        yOffset = event.getSceneY();
+                    }
+                });
+                ap.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        stage.setX(event.getScreenX() - xOffset);
+                        stage.setY(event.getScreenY() - yOffset);
+                    }
+                });
+                Scene scene = new Scene(ap, 800, 600);
+                stage.setScene(scene);
+
+//                stage.setScene(new Scene(fxmlLoader.load(), 800, 600));
                 map controller = fxmlLoader.getController();
                 controller.setLocation(2);
                 stage.show();
@@ -252,6 +273,10 @@ public class scene_02 {
                 e.printStackTrace();
             }
         }
+    }
+    public static void setIsMapShowingFALSE() {
+        isMapShowing = false;
+        System.out.println(isMapShowing);
     }
 
     //아...............게임엔개발팀의애정혹은돈에의한뭐시기가담긴거구나....
