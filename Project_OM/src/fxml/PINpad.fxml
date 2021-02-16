@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="padpane" prefHeight="266.0" prefWidth="486.0" style="-fx-background-color: black;" stylesheets="@../css/PINpad.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sceneController.PINpad">
+   <children>
+      <Label fx:id="pass_slot" layoutX="53.0" layoutY="125.0" prefHeight="17.0" prefWidth="64.0" text="_ _ _ _" textFill="#c1b9c3">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label layoutX="53.0" layoutY="44.0" prefHeight="22.0" prefWidth="206.0" text="PROFILE: Administrator" textFill="#c1b9c3">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label layoutX="53.0" layoutY="66.0" prefHeight="22.0" prefWidth="215.0" text="Biometric Authentication ... Done" textFill="#c1b9c3">
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label layoutX="53.0" layoutY="88.0" prefHeight="22.0" prefWidth="215.0" text="Enter Password..." textFill="#c1b9c3">
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <AnchorPane id="buttonap" layoutX="303.0" layoutY="44.0" stylesheets="@../css/PINpad.css">
+         <children>
+            <Label fx:id="no_1" alignment="CENTER" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="1" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <Label fx:id="no_2" alignment="CENTER" layoutX="44.0" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="2" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <Label fx:id="no_3" alignment="CENTER" layoutX="88.0" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="3" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <Label fx:id="no_4" alignment="CENTER" layoutY="45.0" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="4" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <Label fx:id="no_5" alignment="CENTER" layoutX="44.0" layoutY="45.0" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="5" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <Label fx:id="no_6" alignment="CENTER" layoutX="88.0" layoutY="45.0" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="6" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <Label fx:id="no_7" alignment="CENTER" layoutY="90.0" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="7" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <Label fx:id="no_8" alignment="CENTER" layoutX="44.0" layoutY="90.0" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="8" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <Label fx:id="no_9" alignment="CENTER" layoutX="88.0" layoutY="90.0" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="9" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+            <Label fx:id="no_9" alignment="CENTER" layoutX="44.0" layoutY="135.0" onMouseClicked="#PINpadButtonOnClick" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/PINpad.css" text="0" textFill="#c3b7c9">
+               <font>
+                  <Font name="Saira Stencil One Regular" size="22.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

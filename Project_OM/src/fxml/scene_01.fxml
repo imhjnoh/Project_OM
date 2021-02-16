@@ -46,7 +46,7 @@
             <DropShadow />
          </effect>
       </Label>
-      <Label fx:id="lbl_script" alignment="CENTER" layoutY="555.0" onMouseClicked="#scriptLabelOnClick" prefHeight="130.0" prefWidth="1280.0" style="-fx-background-color: rgba(0,0,0,0.5); -fx-padding: 30px;" text="Administrator, 좋은 아침입니다." textFill="WHITE">
+      <Label fx:id="lbl_script" alignment="CENTER_LEFT" layoutY="555.0" onMouseClicked="#scriptLabelOnClick" prefHeight="130.0" prefWidth="1280.0" style="-fx-background-color: rgba(0,0,0,0.5); -fx-padding: 30px;" text="Administrator, 좋은 아침입니다." textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>

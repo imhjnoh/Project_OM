@@ -1,0 +1,14 @@
+#padpane {
+  /* -fx-border-color: #fff;
+  -fx-border-width: 3;
+  -fx-border-radius: 30;
+  -fx-background-color: rgba(255, 255, 255, 0.5);
+  -fx-background-radius: 30; */
+}
+/* .label{
+  -fx-font-family: "Saira Stencil One", cursive;
+  -fx-font-size: 40px;
+} */
+#buttonap .label:hover{
+  -fx-background-color: rgba(255,255,255,0.1)
+}

@@ -1,7 +1,15 @@
 package main.sceneController;
 
+import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -10,7 +18,9 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import main.Managers.LoadScene;
 import main.Managers.SoundManager;
@@ -218,6 +228,7 @@ public class scene_01 {
     }
 
     public void scriptLabelOnClick(MouseEvent e) throws IOException, ParseException {
+
         String curr_script = (String) script.poll();
         String sfx_file = new String();
 
@@ -230,12 +241,38 @@ public class scene_01 {
             lbl_script.setTextFill(Color.SKYBLUE);
             curr_script = curr_script.substring(3);
             new SoundManager("sfx_glitch_button").PlaySound();
-
         }else if(curr_script.startsWith("[om]")){
 //            sfx_file = "src/etc/Error-sound-effect.mp3";
             lbl_script.setTextFill(Color.WHITE);
             curr_script = curr_script.substring(4);
             new SoundManager("sfx_system_sound").PlaySound();
+        }else if(curr_script.startsWith("[m]")){
+//            sfx_file = "src/etc/Error-sound-effect.mp3";
+            lbl_script.setTextFill(Color.SKYBLUE);
+            curr_script = curr_script.substring(3);
+            new SoundManager("sfx_system_sound").PlaySound();
+        }else if(curr_script.startsWith("[e]")){
+//            sfx_file = "src/etc/Error-sound-effect.mp3";
+            lbl_script.setTextFill(Color.SKYBLUE);
+            curr_script = curr_script.substring(3);
+            new SoundManager("sfx_system_sound").PlaySound();
+
+            Parent root1;
+            try {
+                root1 = FXMLLoader.load(getClass().getClassLoader().getResource("./src/fxml/PINpad.fxml"));
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setTitle("My New Stage Title");
+                stage.setScene(new Scene(root1, 486, 266));
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+
+                // Hide this current window (if this is what you want)
+//                ((Node)(event.getSource())).getScene().getWindow().hide();
+            }
+            catch (IOException ev) {
+                ev.printStackTrace();
+            }
         }
 
         // 사운드 효과 실행
@@ -245,7 +282,25 @@ public class scene_01 {
 //            mp_sfx.play();
 //        }
 
-        lbl_script.setText(curr_script);
+        // 문제가 있다.. 중간에 누르면 동시에 실행된다. 메소드든 클래스든 따로 빼는 게 좋을듯
+        final IntegerProperty i = new SimpleIntegerProperty(0);
+        Timeline timeline = new Timeline();
+        String finalCurr_script = curr_script;
+        KeyFrame keyFrame = new KeyFrame(
+                Duration.seconds(.05),
+                event -> {
+                    if (i.get() > finalCurr_script.length()) {
+                        timeline.stop();
+                    } else {
+                        lbl_script.setText(finalCurr_script.substring(0, i.get()));
+                        i.set(i.get() + 1);
+                    }
+                });
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
+//        lbl_script.setText(curr_script);
 
 
     }

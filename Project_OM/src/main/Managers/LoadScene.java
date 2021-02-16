@@ -63,7 +63,6 @@ public class LoadScene {
 //            controller.initISS(iss);
         }
 
-
         stage.show();
     }
 }
