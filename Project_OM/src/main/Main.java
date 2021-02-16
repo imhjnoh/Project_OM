@@ -18,8 +18,6 @@ public class Main extends Application {
         System.setProperty("prism.lcdtext", "false"); // 폰트 안티앨리어싱
         Font.loadFont(getClass().getResourceAsStream("../etc/SairaStencilOne-Regular.ttf"), 40);
 
-
-
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/title.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 1280, 720));
@@ -28,10 +26,7 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) throws Exception{
-
-        ItemManager itemManager = new ItemManager();
-        itemManager.parseJson();
+    public static void main(String[] args) {
 
         launch(args);
 
